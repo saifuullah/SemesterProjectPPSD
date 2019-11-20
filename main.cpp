@@ -1,3 +1,69 @@
+//THIS IS CUSTOMER CLASS
+//THIS CLASS CONTAIN CUSTOMER RELATED DATA
+//NAME,PHONE:#,BOOK SEAT,MOVIE ID ,
+//AND THEIR SETTER AND GETTER
+
+
+
+
+
+class customer
+{
+  private:
+      //private Data
+
+      string phone_number;
+      string name;
+      int book_seat;
+      int movieId;
+  public:
+
+      //Constructer
+   customer()
+   {
+       phone_number="Null";
+       name="NULL";
+       book_seat=0;
+       movieId=0;
+   }
+
+                                    //Below is Setters And Getters
+   void setMovieId(int x)
+   {
+       movieId=x;
+   }
+   int getMovieId()
+   {
+       return movieId;
+   }
+   void setPhone(string ph)
+   {  phone_number=ph; }
+
+   void setName(string n)
+   {  name=n; }
+
+   void bookSeat(int s)
+   { book_seat=s; }
+
+
+
+
+  string getPhone()
+  {  return phone_number; }
+
+  int getBookSeat()
+  {  return book_seat; }
+
+  string getName()
+  {  return name; }
+
+
+};
+
+
+
+
+
 
 /**    ##########  Class Movie
 **                This Class contain Data About movies
