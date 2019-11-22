@@ -1,3 +1,12 @@
+/**
+
+This is Movie ticket booking system
+User can use it to book different movies avalible in list
+We can also edit any movie data, and add new movie and delete movies
+
+**/
+
+
 //THIS IS CUSTOMER CLASS
 //THIS CLASS CONTAIN CUSTOMER RELATED DATA
 //NAME,PHONE:#,BOOK SEAT,MOVIE ID ,
@@ -224,7 +233,33 @@ int current_place=0;
 
 
 
+//This is book seat function
+//This will take user name , phone number , and number of seats
+//     user want to reserved ::::
 
+
+
+void BookSeat()         ///Booking New seat function:
+{
+
+    cout<<"Movie List is Below "<<endl<<"Please Select a Movie and Enter asked information :) "<<endl<<endl;
+
+    display_list();          //This will display list.....
+
+
+    int var,id,setseatleft;  //General variable used
+    cout<<"Enter Movie Id :"<<endl;
+    cin>>id;
+
+    if(checkId(id)==0)
+        {
+        cout<<"Sorry,  Wrong Id Input (Movie not found) "<<endl<<"Please Enter a correct Id "<<endl;
+        cout<<"Enter  to Enter again or 0 to exit "<<endl;
+        cin>>var;
+        if(var==1)
+            BookSeat();
+            //Still InComplete
+            //i am Working (saif)
 
 
 
