@@ -254,13 +254,43 @@ void BookSeat()         ///Booking New seat function:
     if(checkId(id)==0)
         {
         cout<<"Sorry,  Wrong Id Input (Movie not found) "<<endl<<"Please Enter a correct Id "<<endl;
-        cout<<"Enter  to Enter again or 0 to exit "<<endl;
+        cout<<"Enter  1 to Enter again or 0 to exit "<<endl;
         cin>>var;
         if(var==1)
             BookSeat();
-            //Still InComplete
-            //i am Working (saif)
+              else
+                 return ;
+        }            //This will direct the user what to do ;
 
+    else
+    {
+        string st;
+        int x;     //Variables used for general purpose
+
+
+         //Take name of user
+      cout<<"Enter Customer Name  :  " ;
+      cin>>st;
+      cus[cus_current_place].setName(st);
+
+       //Take customer Phone number
+      cout<<"Enter Customer Phone Number " ;
+      cin>>st;
+      cus[cus_current_place].setPhone(st);
+
+      //Take seats to be booked
+      cout<<"Enter Number of Seats you want to reserved " ;
+      cin>>x;
+
+      if(x==0)
+      {
+           //If user enter 0 seats to be booked
+           //Close program
+        cout<<" 0 seats cannot be reserved ..!!!! "<<endl;
+         return ;
+      }
+        //Incomplete Working
+        //Saif
 
 
 
