@@ -289,8 +289,68 @@ void BookSeat()         ///Booking New seat function:
         cout<<" 0 seats cannot be reserved ..!!!! "<<endl;
          return ;
       }
-        //Incomplete Working
-        //Saif
+
+              //Else do the following work
+
+
+
+            //general Purpose variables
+        int problem,index;
+        index=getObjectNum(id);
+
+
+
+
+
+                //if the User want to reserved seats that is out of range of avalible seats (avillible < wanted )
+                //We give choice to the user to reserved the remaining Seats or not
+                //if yes seats reserved
+                //if not close the function
+
+        if((bookingSysObj[index].getSeatLeft()-x)<0)
+    {
+            cout<<"Sorry, You can only Reserve  "<<bookingSysObj[index].getSeatLeft()<<" Seats "<<endl;
+            cout<<bookingSysObj[index].getSeatLeft()<<" Seats Left "<<endl;
+            cout <<endl<<"Do you Want to Reserved "<<bookingSysObj[index].getSeatLeft() <<" :  (y/n) ? :  " ;
+            char y;
+            cin>>y;
+            if(y=='Y' || y=='y')
+                x=bookingSysObj[index].getSeatLeft();
+            else
+            return ;
+        }
+
+        //book the seat for user
+      cus[cus_current_place].bookSeat(x);
+
+
+
+
+         //Now Decrease the seats avilible
+       setseatleft=bookingSysObj[index].getSeatLeft()-x;
+      bookingSysObj[index].setSeatLeft(setseatleft);
+
+      //Set Id of movie in customer class
+      cus[cus_current_place].setMovieId(id);
+
+
+      //Increase the indexing variable for customer array(array of object );
+      cus_current_place++;
+
+
+    }
+
+
+
+}//END
+
+//This Function is completed
+//But still its Helper Function is To code
+//
+//
+//
+//Helper Function Section
+
 
 
 
