@@ -345,7 +345,6 @@ void BookSeat()         ///Booking New seat function:
 }//END
 
 //This Function is completed
-//But still its Helper Function is To code
 //
 //
 //
@@ -353,6 +352,36 @@ void BookSeat()         ///Booking New seat function:
 
 
 
+    //These are helper functions for
+    //Booking seat function
+
+
+
+    //First return The Index of user movie
+    //second return if the user entered Movie Id is present or not
+            int getObjectNum(int id)
+            {
+                for(int y=0; y<20; y++)
+                {
+                    if(bookingSysObj[y].getId()==id)
+                        return y;
+                }
+                return -1 ;
+            }
+
+            int checkId(int x)  //If movie present return 1 else return 0
+            {
+                for(int a=0; a<20; a++)
+                {
+                    if(bookingSysObj[a].getId()==x)
+                        return 1;
+                }
+                return 0;
+            }//END
+
+
+//Helper Functions ENDS HERE
+///////////////////////////////////////////////////////////////////////////////////////////
 
 };
 
