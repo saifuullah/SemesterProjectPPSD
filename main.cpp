@@ -314,7 +314,9 @@ void BookSeat()         ///Booking New seat function:
             cout <<endl<<"Do you Want to Reserved "<<bookingSysObj[index].getSeatLeft() <<" :  (y/n) ? :  " ;
             char y;
             cin>>y;
-            if(y=='Y' || y=='y')
+            if(y=='Y')
+                x=bookingSysObj[index].getSeatLeft();
+            else if(=='y')
                 x=bookingSysObj[index].getSeatLeft();
             else
             return ;
