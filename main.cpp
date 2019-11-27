@@ -27,6 +27,7 @@ class customer
       string name;
       int book_seat;
       int movieId;
+      int price ;
   public:
 
       //Constructer
@@ -36,12 +37,21 @@ class customer
        name="NULL";
        book_seat=0;
        movieId=0;
+       price=0;
    }
 
-                                    //Below is Setters And Getters
+                                //Below is Setters And Getters
    void setMovieId(int x)
    {
        movieId=x;
+   }
+   void setPrice(int p)
+   {
+       price = p;
+   }
+   int getPrice()
+   {
+       return price;
    }
    int getMovieId()
    {
@@ -253,8 +263,8 @@ void BookSeat()         ///Booking New seat function:
 
     if(checkId(id)==0)
         {
-        cout<<"Sorry,  Wrong Id Input (Movie not found) "<<endl<<"Please Enter a correct Id "<<endl;
-        cout<<"Enter  1 to Enter again or 0 to exit "<<endl;
+        cout<<endl<<"Sorry,  Wrong Id Input (Movie not found) "<<endl<<"Please Enter a correct Id "<<endl;
+        cout<<endl<<"Enter  1 to Enter again or 0 to exit ?        :: "<<endl;
         cin>>var;
         if(var==1)
             BookSeat();
@@ -324,6 +334,9 @@ void BookSeat()         ///Booking New seat function:
 
         //book the seat for user
       cus[cus_current_place].bookSeat(x);
+      int price = x * bookingSysObj[index].getMoviePrice() ;
+      cout << endl << "Tickets Purchased Successfully,  "<<endl<<"Total Price is : "<<price<<endl;
+      cus[cus_current_place].setPrice(price);
 
 
 
