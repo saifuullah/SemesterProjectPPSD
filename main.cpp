@@ -398,6 +398,66 @@ void BookSeat()         ///Booking New seat function:
 //Helper Functions ENDS HERE
 ///////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+
+
+/** %%%%%%&&&&&&&&&&%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-----------------------------------------------------------------------------------------|
+-------------------This Is File Handling Section-----------------------------------------|
+------This Function Will first Create a TXT File ----------------------------------------|
+-------------------If the File Exist it Will not create it Again-------------------------|
+-----------But Save the data-------------------------------------------------------------|
+-------------------This Function will save the Data in TXT File--------------------------|
+-----------------------------------------------------------------------------------------|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+*/
+
+
+//Function Start here
+//File Name DataFile.TXT
+
+
+void saveMovieData()
+{
+
+    //Create object of f-stream class
+    fstream dataFile;
+
+
+    dataFile.open("DataFile.txt", ios::out);
+
+    int i = 0;
+    while (i < current_place )
+    {
+        dataFile << bookingSysObj[i].getName() << endl;
+        dataFile << bookingSysObj[i].getId() << endl ;
+
+        dataFile << bookingSysObj[i].getFormat() << endl ;
+        dataFile << bookingSysObj[i].getShowDate() << endl;
+
+        dataFile << bookingSysObj[i].getShowTime() << endl ;
+        dataFile << bookingSysObj[i].getPrice() << endl;
+
+        dataFile << bookingSysObj[i].getSeat() << endl ;
+        dataFile << bookingSysObj[i].getSeatLeft() << endl;
+
+
+
+        //increment the counter
+        i++;
+    }
+
+    dataFile << "endOfFile " ;
+    dataFile.close();
+
+}//Function END
+
+
+
 };
 
 int main()
