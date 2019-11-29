@@ -242,6 +242,15 @@ int current_place=0;
 
 
 
+/** --------------------------------------------------------------------------------
+-------------Booking New Seat Function ---------------------------------------------
+----Inputs: Null -----------------We are taking input in this function and pass ----
+------it to the booking system class using their own function : --------------------
+------------------------------------------------------------------------------------
+*/
+
+
+
 
 //This is book seat function
 //This will take user name , phone number , and number of seats
@@ -504,6 +513,17 @@ void display_list()
 
 int main()
 {
+
+    functions my_object;
+
+        //my_object.readCustomerData();
+          my_object.readMovieData();
+
+
+    //General Purpose varibales
+    int choice;
+    string name,ph;
+    char ch;
 
 
 
