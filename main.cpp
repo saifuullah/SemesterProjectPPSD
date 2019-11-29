@@ -458,6 +458,48 @@ void saveMovieData()
 
 
 
+
+
+
+
+/*****************************************************************************************
+***************************************  Display Function  *******************************
+***************************************  Display Function  *******************************
+******************************************************************************************/
+
+
+//This function will display the list of present movies ::
+void display_list()
+{
+
+  cout << "Displaying Movies List "<<endl;
+    cout<<"--------------------------------------------------------------------------------------------------"<<endl;
+ for(int x=0; x<20; x++)
+    {
+        if(bookingSysObj[x].getId()!=0)
+        {
+            cout<<"---------------------------------------------------"<<endl;
+            cout<<"---------------------------------------------------"<<endl;
+            cout<<"Movie Id        :  "<<bookingSysObj[x].getId()<<endl;
+            cout<<"Movie Name      :  "<<bookingSysObj[x].getName()<<endl;
+            cout<<"Movie Format    :  "<<bookingSysObj[x].getFormat()<<endl;
+            cout<<"Movie Show Date :  "<<bookingSysObj[x].getShowDate()<<endl;
+            cout<<"Movie Show Time :  "<<bookingSysObj[x].getShowTime()<<endl;
+            cout<<"Movie Price     :  "<<bookingSysObj[x].getMoviePrice()<<endl;
+            cout<<"Movie Seats     :  "<<bookingSysObj[x].getSeat()<<endl;
+            cout<<"---------------------------------------------------"<<endl;
+            cout<<"---------------------------------------------------"<<endl;
+        }
+    }
+
+    cout<<"-------------------------------------------------------------------------------------------------"<<endl;
+
+
+}   //END
+
+
+
+
 };
 
 int main()
