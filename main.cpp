@@ -430,18 +430,26 @@ void BookSeat()         ///Booking New seat function:
 //File Name DataFile.TXT
 
 
+
+//Function Start here-----------------------------------
+//File Name DataFile.TXT--------------------------------
 void saveMovieData()
 {
 
     //Create object of f-stream class
     fstream dataFile;
 
-
+       //Create file "DataFile.TXT"------------------------Created
     dataFile.open("DataFile.txt", ios::out);
 
     int i = 0;
+
+    //Save Data Until End---------------------All Objects
+    // Up to Last Object's Data
     while (i < current_place )
     {
+
+        //Writing Movie data into TXT file
         dataFile << bookingSysObj[i].getName() << endl;
         dataFile << bookingSysObj[i].getId() << endl ;
 
@@ -460,10 +468,14 @@ void saveMovieData()
         i++;
     }
 
-    dataFile << "endOfFile " ;
+    //Saving is Done
+    //Close the File
+    string st="end";
+    dataFile << st ;
     dataFile.close();
 
 }//Function END
+
 
 
 
