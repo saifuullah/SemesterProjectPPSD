@@ -1,8 +1,18 @@
 /**
 
-This is Movie ticket booking system
-User can use it to book different movies avalible in list
-We can also edit any movie data, and add new movie and delete movies
+--------------------------------------------------------------------@@
+This Program can implement a functionality of movie ticket booking
+system. Different movies are added using it's methods and also any
+movie can be edit.
+User can book ticket for different movies avalible is the program
+list.
+--------------------------------------------------------------------@@
+
+--------------------------------------------------------------------@@
+Group Members: Imran Khan, Saif ullah Khan, Wisha Khurshid
+--------------------------------------------------------------------@@
+
+
 
 **/
 
@@ -10,7 +20,7 @@ We can also edit any movie data, and add new movie and delete movies
 //THIS IS CUSTOMER CLASS
 //THIS CLASS CONTAIN CUSTOMER RELATED DATA
 //NAME,PHONE:#,BOOK SEAT,MOVIE ID ,
-//AND THEIR SETTER AND GETTER
+//AND THEIR SETTERS AND GETTERS
 
 
 #include <iostream>
@@ -22,11 +32,15 @@ class customer
 {
   private:
       //private Data
-
+      //Phone number of customer
       string phone_number;
+      //Name of customer
       string name;
+      //Seats reserved by customer
       int book_seat;
+      //Movie id Booked by customer
       int movieId;
+      //Movie Price
       int price ;
   public:
 
@@ -40,41 +54,46 @@ class customer
        price=0;
    }
 
-                                //Below is Setters And Getters
+        //It Set movie Id
    void setMovieId(int x)
    {
        movieId=x;
    }
+         //is set the movie price
    void setPrice(int p)
    {
        price = p;
    }
+        //it return the movie price
    int getPrice()
    {
        return price;
    }
+       //it return the movie id
    int getMovieId()
    {
        return movieId;
    }
+   //it set the Phone Number
    void setPhone(string ph)
    {  phone_number=ph; }
 
+   //it Set the name of customer
    void setName(string n)
    {  name=n; }
-
+        //It set the booking sets number
    void bookSeat(int s)
    { book_seat=s; }
 
 
-
-
+   //it return the phone number
   string getPhone()
   {  return phone_number; }
-
+     //it return nooked seats
   int getBookSeat()
   {  return book_seat; }
 
+  //it returns the Name
   string getName()
   {  return name; }
 
@@ -86,10 +105,15 @@ class customer
 
 
 
-/**    ##########  Class Movie
-**                This Class contain Data About movies
-**
-**
+/**   ===============================================================@@
+**    ===============================================================@@
+**      This is Movie Class
+**      This Class contain Data About movies
+**      Like Movie id,name,price,seats etc
+**      More ever this class contain Setters and getters for these
+**      attributes so that their values are set and get where it needed.
+**    ===============================================================@@
+**    ===============================================================@@
 */
 
 class BookingSystem
@@ -126,6 +150,7 @@ public:
   }
 
   //Setters and getters
+
   void setTotalPrice(int x)
   { total_price=x; }
 
@@ -199,14 +224,11 @@ string getShowTime()
 
 
 
-/*********************************
-*******************************************
-***************************************************/
-
-
-//This is Class Function
+//====================================================================================@@
+//====================================================================================@@
+//This is Function Class
 //This Class contain all the methods that will be used for different operations
-//We will make 1000 objects of customer class , it mean maximmum users will be 1000
+//We will make 1000 objects of customer class , it mean maximmum users will be 1200
 //We will make 20 objects of Class Movies so that Maximumm numbers of movies will be stored is 20
 //There is also some varibles used in this class
 //These Variables are defined at the start of the class in private section
@@ -215,7 +237,7 @@ string getShowTime()
 
 //Example : This class will work as a bridge
 
-// User->Main--call-->Functions-->Customer-data-->BookingSystem.
+// User->Main(call)-->Functions-->Customer->data-->BookingSystem.
 
 class functions{
 public:
@@ -252,10 +274,10 @@ int current_place=0;
 
 
 
-//This is book seat function
+//This is booking seat function
 //This will take user name , phone number , and number of seats
-//     user want to reserved ::::
-
+//user want to reserved ::::
+//This will store user data in customer class
 
 
 void BookSeat()         ///Booking New seat function:
@@ -270,17 +292,22 @@ void BookSeat()         ///Booking New seat function:
     cout<<"Enter Movie Id :"<<endl;
     cin>>id;
 
+    //check the id of entered movie
+    //to check weather the movie is present or not
     if(checkId(id)==0)
         {
+            //if movie is not present
+            //show error message
         cout<<endl<<"Sorry,  Wrong Id Input (Movie not found) "<<endl<<"Please Enter a correct Id "<<endl;
         cout<<endl<<"Enter  1 to Enter again or 0 to exit ?        :: "<<endl;
         cin>>var;
         if(var==1)
             BookSeat();
-              else
+        else
                  return ;
         }            //This will direct the user what to do ;
 
+        //If the movie is present Jump their
     else
     {
         string st;
@@ -323,8 +350,8 @@ void BookSeat()         ///Booking New seat function:
 
                 //if the User want to reserved seats that is out of range of avalible seats (avillible < wanted )
                 //We give choice to the user to reserved the remaining Seats or not
-                //if yes seats reserved
-                //if not close the function
+                //if yes, seats are reserved
+                //if not, close the function
 
         if((bookingSysObj[index].getSeatLeft()-x)<0)
     {
