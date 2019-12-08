@@ -528,7 +528,7 @@ int main()
 
     functions my_object;
 
-        //my_object.readCustomerData();
+           my_object.readCustomerData();
           my_object.readMovieData();
 
 
@@ -536,6 +536,92 @@ int main()
     int choice;
     string name,ph;
     char ch;
+
+    do{
+
+            cout << " ****************************************************************** " <<endl;
+            cout << " WellCome to the Movie Ticket Booking System  "<< endl;
+            cout << " Please Select Your choice  >> " << endl <<endl ;
+
+            cout << "***************************************************** " <<endl;
+            cout << "**  1. For Add A New Movie To Menu                *** " <<endl;
+            cout << "**  2. For Edit Existing Movie Data               *** " <<endl;
+            cout << "**  3. For Delete A Movie From List               *** " <<endl;
+            cout << "**  4. For Booking Your Tickets                   *** " <<endl;
+            cout << "**  5. For Checking Your Seat/Reservation         *** " <<endl;
+            cout << "**  6. For Displaying Movies List                 *** " <<endl;
+            cout << "***************************************************** " <<endl;
+
+            //User Choice
+            cout << " choice   : " ;
+            cin >> choice ;
+
+
+                    //Here is the switch statement Section
+                    //Direct User What He Wants
+
+            switch ( choice )
+            {
+                //first case add new movie
+            case 1 :
+                my_object.addNewMovie();
+                break;
+
+                //Second Case
+            case 2:
+                my_object.editMovie();
+                break;
+
+
+             //Third Case
+            case 3:
+                my_object.deleteMovie();
+                break;
+
+
+                //Case 4
+            case 4:
+                my_object.BookSeat();
+                break;
+
+
+            case 5:
+
+                cout << " Enter the Phone Number of customer :  "  ;
+                cin >> ph;
+                cout << " Enter The Name of Customer  : "  ;
+                cin >> name ;
+                my_object.checkForSeat(ph, name);
+                break;
+
+
+                //Case 4
+            case 6:
+
+                my_object.display_list();
+                break;
+
+
+
+            default :
+                cout << "Invalid input : " << endl;
+
+
+            } // Switch statement ENDS
+
+
+
+
+        //Ask the User to Continue or To exit
+        //Yes or No
+        cout <<"Do you want to Continue (y/n)   :  "<<endl;
+        cin >> ch ;
+        if ( ch == 'n')
+            {
+            my_object.saveMovieData();
+           my_object.saveCustomerData();
+            }
+    }while (ch != 'n');
 
 
 
