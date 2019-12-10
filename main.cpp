@@ -548,6 +548,94 @@ void display_list()
 
 
 
+
+/**-------------------------------------------------------------------
+---------------------------Add New Movie Function---------------------------
+-------This function will add a new movie ----------------------------
+---------Inputs are all the attributes that is required for the movie--
+----------------------------------------------------------------------
+*/
+//Adding new movie to the Menu
+// ------------------------------------------------ //
+void addNewMovie()
+{                         ///This is Add new movie function:
+
+    if(movie_limit==movie_stored)
+   { cout<<endl<<"Sorry, New movie cannot be added"<<endl;
+    cout<<"Movie limit is full (20) "<<endl;
+    cout<<"Delete a movie, than try again .!!"<<endl<<endl; }
+
+    ///If list is not full add new movie than
+else
+{
+    cout<<"Dear User, You are going to add a new movies "<<endl;
+    cout<<"Please Enter Information about New Movie"<<endl;
+    cout<<"***********************************************"<<endl<<endl;
+
+
+    //take Id of New Movie ::
+    int nid;
+    cout<<"Enter the Id of new movie :  ";
+    cin>>nid;
+     nid = checkDoubleId(nid);
+    bookingSysObj[current_place].setId(nid);
+
+
+    //Take name of new movie ::
+    string nname;
+    cout<<"Enter the Name of New movie :  ";
+    cin>>nname;
+    bookingSysObj[current_place].setName(nname);
+
+
+    //Take format of New Movie (2D or 3D) ::
+    string nfor;
+    cout<<"Enter the Format of New movie (2D or 3D) :  ";
+    cin>>nfor;
+    bookingSysObj[current_place].setFormat(nfor);
+
+
+    //Take time for the movie(show time) ::
+    string ntime;
+    cout<<"Enter the Time of New movie  (Without spaces):  ";
+    cin>>ntime;
+    bookingSysObj[current_place].setShowTime(ntime);
+
+
+    //Take Date for the movie(show date) ::
+    string ndate;
+    cout<<"Enter the Date of New movie -->format(12/4/2000) without spaces :  " ;
+    cin>> ndate;
+    bookingSysObj[current_place].setShowDate(ndate);
+
+
+    //Take Price for the new movie ::
+    int nprice;
+    cout<<"Enter the Price of New movie :  ";
+    cin>>nprice;
+    bookingSysObj[current_place].setMoviePrice(nprice);
+
+
+    //Take Seats for the movie Entered ::
+    int nseat;
+    cout<<"Enter The Seats in New movie  :  ";
+    cin>>nseat;
+    bookingSysObj[current_place].setSeat(nseat);
+    bookingSysObj[current_place].setSeatLeft(nseat);
+
+    cout<<endl<<"Please wait ......."<<endl<<"New Movie Has been added successfully  "<<endl<<endl;
+
+    //Increment current place variable(indexer) ::
+    current_place++;
+    //Increment Movie stored variable :
+    movie_stored++;
+
+}//else ENd
+
+               display_list();
+}//End
+
+
 };
 
 int main()
