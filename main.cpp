@@ -636,6 +636,135 @@ else
 }//End
 
 
+
+
+
+
+
+
+//****************************************************************************************//
+//This function will Read the Data from the File and will save into the Objects at Runtime
+//Because when the program will restart it will have no data,  so this will restore data
+//****************************************************************************************//
+
+
+/**                 New Function Starts           **/
+
+
+
+
+
+//****************************************************************************************
+//This is Read Movie data function . This will read the data from the TXT file and save
+// Memory at runtime for different operations
+//****************************************************************************************
+
+void readMovieData()
+{
+     // F-stream object --------- :
+     fstream file;
+
+     //General Purpose variables (Local Variables) ::
+    string st;
+     int x = 0;
+       int i = 0;
+
+       // This is counter for attributes                      --------
+       //There are 8 different attributes for a single movie ---------
+       //If counter == 8 , it mean one movie data has been read from
+       //the file    -------------------------------------------------
+       // Now switch to other movie data
+       int counter = 0;
+
+       //Open the file for reading ------ ::
+    file.open("DataFile.txt");
+    while(file.eof()==0)
+    {
+        /** Reset the counter */
+            if(counter==8)
+            {
+                counter=0;
+                current_place++;
+                movie_stored++;
+                i++;
+            }
+
+
+       // Here we set different "if" conditions ------------------------
+       // Because we know the program will read the data in same format
+       // as we save them in TXT File so it will jump on required "if"
+       // condition to store correct data  -----------------------------
+
+                    if(counter==0)
+                    {
+                        file >> st;
+                        if(st == "end")
+                            break;
+                        bookingSysObj[i].setName(st);
+                    }
+                    else if(counter==1)
+                    {
+                        file >> x;
+                        bookingSysObj[i].setId(x);
+                    }
+                    else if(counter==2)
+                    {
+                        file >> st ;
+                        bookingSysObj[i].setFormat(st);
+                    }
+                    else if(counter==3)
+                    {
+                        file >> st ;
+                        bookingSysObj[i].setShowDate(st);
+                    }
+                    else if(counter==4)
+                    {
+                        file >> st ;
+                        bookingSysObj[i].setShowTime(st);
+                    }
+                    else if(counter==5)
+                    {
+                        file >> x ;
+                        bookingSysObj[i].setMoviePrice(x);
+                    }
+                    else if(counter==6)
+                    {
+                        file >> x;
+                        bookingSysObj[i].setSeat(x);
+                    }
+                    else if(counter==7)
+                    {
+                        file >> x ;
+                        bookingSysObj[i].setSeatLeft(x);
+                    }
+                        counter++;
+    }
+} //END OF FUNCTION -------------(......)
+
+
+
+
+
+
+
+
+   //***********************************************************
+   // Definition of function openFileIn. Accepts a reference   *
+   // to an f-stream object as its argument. The file is opened*
+   // for input. The function returns true upon success, false *
+   // upon failure. *
+   //***********************************************************
+
+   bool openFileIn(fstream &file, char *name)
+   {
+       file.open(name, ios::in);
+        if (file.fail())
+            return false;
+        else
+            return true;
+
+   } //END HERE
+
 };
 
 int main()
