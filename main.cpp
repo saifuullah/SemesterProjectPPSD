@@ -120,15 +120,15 @@ class BookingSystem
 {
   private:  //Private Data
 
-        int total_price;
         int id_number;
+        int total_price;
         int movie_price;      ///These are data types
         int seats;            ///that will be used to store
         int seat_left;
         string name;          ///related data
         string show_date;
-        string format;
         string show_time;
+        string format;
 
 
 
@@ -831,7 +831,15 @@ int nid;
 
 }
 
-
+//This function
+//will delete data
+//of a single movie
+//and after it will decrease
+//the indexer of
+//movie counter
+//
+//Data is shifted back to
+//fill the vacant place
 
 
 
