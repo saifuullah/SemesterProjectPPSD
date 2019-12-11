@@ -831,6 +831,61 @@ int nid;
 
 }
 
+
+
+
+
+
+
+//***********************************************************************************//
+//***********************************************************************************//
+//***********************************************************************************//
+
+
+
+
+
+//************************************************************************************//
+//************************************************************************************//
+/**                   New Function Starts                      **/
+
+//* This function will save the customer data into  TXT file ------Name cusDataFile.TXT
+
+void saveCustomerData()
+{
+
+    //Create object of f-stream class
+    fstream dataFile;
+
+      // open File for Writing
+      // Reading Mode ------------------- IOS::OUT
+    dataFile.open("CustomerData.txt", ios::out);
+
+    int i = 0;
+    // Starts Loop
+    //Counts up to last Object's
+    while (i < cus_current_place )
+    {
+
+                 //Writing customer data into TXT file
+              dataFile << cus[i].getName() << endl;
+              dataFile << cus[i].getBookSeat() << endl;
+              dataFile << cus[i].getPhone() <<endl;
+              dataFile << cus[i].getMovieId() << endl;
+              dataFile << cus[i].getPrice() << endl;
+
+        //increment the counter
+        i++;
+    }
+
+    // Data Saved
+    // Close the File
+    string st="end";
+    dataFile << st;
+    dataFile.close();
+
+}//Function END
+
 };
 
 int main()
