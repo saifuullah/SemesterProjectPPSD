@@ -765,6 +765,72 @@ void readMovieData()
 
    } //END HERE
 
+
+
+
+
+
+
+
+   /**
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+------This is Delete Movie Function -------------------------------------------------
+------When the Function Delete a Movie , --------------------------------------------
+------The customer that have booked sets for this movie , data will not be deleted --
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+*/
+
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+void deleteMovie()
+{
+
+int nid;
+
+    cout<<"Dear User, You are Going to delete a movie ..!! "<<endl;
+    cout<<"Enter the Id of Movie to be delete "<<endl;
+    cin >> nid;
+    int delIndex = getObjectNum(nid);
+
+        //If getObjNumber returns -1
+        // it mean the Id of entered movie does not match any Data
+        //If at match it will return a valid Index of Movie
+        //for Movies object array
+
+    if(delIndex == -1)
+    {
+        cout <<" Sorry, The Entered Movie Id if not Found " <<endl<<endl;
+        return ;
+
+    }
+    int y= 20 - delIndex ;
+    int i = 0;
+    //Now shift the Movie Data backwards
+    while(i < y)
+    {
+
+           //This will shift the movies data because when a movie
+           // is deleted from middle the vacant place should be filled
+           // in order to keep a track for addition
+           //i.e.    1,2,3,4,5,6,7,8,9 is the data stored in array
+           //if 4 data is deleted it will be Like   1,2,3, ,5,6,7,8,9
+           //So it should be Like 1,2,3,5,6,7,8,9
+       bookingSysObj[delIndex]  = bookingSysObj[delIndex+1] ;
+        i++;
+    }
+
+           //Now decrease The counter ::::
+    current_place--;
+          //Decrease the Movies stored ::::
+    movie_stored--;
+
+}
+
 };
 
 int main()
