@@ -831,6 +831,310 @@ int nid;
 
 }
 
+
+
+
+
+/** --------------------------------------------------------------------------------
+-------------Booking New Seat Function ---------------------------------------------
+----Inputs: Null -----------------We are taking input in this function and pass ----
+------it to the booking system class using their own function : --------------------
+------------------------------------------------------------------------------------
+*/
+
+
+
+
+void BookSeat()         ///Booking New seat function:
+{
+
+    cout<<"Movie List is Below "<<endl<<"Please Select a Movie and Enter asked information :) "<<endl<<endl;
+
+    display_list();          //This will display list.....
+
+
+    int var,id,setseatleft;  //General variable used
+    cout<<"Enter Movie Id :"<<endl;
+    cin>>id;
+
+    if(checkId(id)==0)
+        {
+        cout<<"Sorry,  Wrong Id Input (Movie not found) "<<endl<<"Please Enter a correct Id "<<endl;
+        cout<<"Enter 1 to Enter again or 0 to exit "<<endl;
+        cin>>var;
+        if(var==1)
+            BookSeat();
+        else
+            return ;
+        }            //This will direct the user what to do ;
+
+    else
+    {
+        string st;
+        int x;     //Variables used for general purpose
+
+
+         //Take name of user
+      cout<<"Enter Customer Name  :  " ;
+      cin>>st;
+      cus[cus_current_place].setName(st);
+
+       //Take customer Phone number
+      cout<<"Enter Customer Phone Number " ;
+      cin>>st;
+      cus[cus_current_place].setPhone(st);
+
+      //Take seats to be booked
+      cout<<"Enter Number of Seats you want to reserved " ;
+      cin>>x;
+
+      if(x==0)
+      {
+           //If user enter 0 seats to be booked
+           //Close program
+        cout<<" 0 seats cannot be reserved ..!!!! "<<endl;
+         return ;
+      }
+
+      //Else do the following work
+
+
+
+            //general Purpose variables
+        int problem,index;
+        index=getObjectNum(id);
+
+
+
+
+
+                //if the User want to reserved seats that is out of range of avalible seats (avillible < wanted )
+                //We give choice to the user to reserved the remaining Seats or not
+                //if yes seats reserved
+                //if not close the function
+
+        if((bookingSysObj[index].getSeatLeft()-x)<0)
+    {
+            cout<<"Sorry, You can only Reserve  "<<bookingSysObj[index].getSeatLeft()<<" Seats "<<endl;
+            cout<<bookingSysObj[index].getSeatLeft()<<" Seats Left ..!!!!!!!!!"<<endl;
+            cout <<endl<<"Do you Want to Reserved "<<bookingSysObj[index].getSeatLeft() <<" :  (y/n) ? :  " ;
+            char y;
+            cin>>y;
+            if(y=='Y')
+                x=bookingSysObj[index].getSeatLeft();
+            else if( y == 'y')
+                x = bookingSysObj[index].getSeatLeft();
+            else
+            return ;
+        }
+
+        //book the seat for user
+      cus[cus_current_place].setBookSeat(x);
+
+
+
+
+         //Now Decrease the seats avilible
+       setseatleft=bookingSysObj[index].getSeatLeft()-x;
+      bookingSysObj[index].setSeatLeft(setseatleft);
+
+      //Set Id of movie in customer class
+      cus[cus_current_place].setMovieId(id);
+
+
+      //Increase the indexing variable for customer array(array of object );
+      cus_current_place++;
+
+
+    }
+
+
+
+}//END
+
+
+
+
+ //this is utility function
+   //this will chech weather
+   //the file is open or not
+   //if the file is open
+   //it will return true
+   //if not it will return
+   // False
+
+    bool isFileOpen(fstream &file, char *name)
+   {
+       //File class object
+       //
+
+
+       file.open(name, ios::in);
+       //open in ios::in mode
+
+       //check weather it is openinable
+
+       //if fails return false
+       //else ]
+       //true
+
+
+        if (file.fail())
+            return false;
+        else
+            return true;
+
+   } //END HERE
+
+
+
+
+
+
+
+   /**
+-----------------------------------------------------------------------------------------------------|
+-------------------------------------This is Search for Seat function--------------------------------|
+-------------------------------------When user want to see if the seat is booked or not--------------|
+-------------------------------------He can use the this function.-----------------------------------|
+------------ Inputs are two :::  1---->User_Phone_Number     2--->User_Name--------------------------|
+-------------------------We are taking two inputs because if the User have same names or same--------|
+-------------------------Phone Numbers they can be identified very easily ---------------------------|
+-----------------------------------------------------------------------------------------------------|
+**/
+
+
+//Here the function starts
+//This input is coming from main function
+//It is Good programing to take input in main :)
+void checkForSeat(string ph, string name)
+{
+
+    //Index variable used for searching data in Customer class objects Array
+    int ind = 0;
+
+    while (ind < 1200)
+    {
+            //if the required information matched with the Entered Data
+            //Condition true
+        if(cus[ind].getPhone()==ph && cus[ind].getName()==name)
+        {
+               // Data shown for the customer
+               // Include Customer data and movie data
+
+            cout << "Dear customer, Seat are Booked :"<<endl<<endl;
+            cout << "Customer Information ...  " <<endl;
+            cout << "Customer Name          : " <<cus[ind].getName()<<endl;
+            cout << "Customer Phone Number  : " <<cus[ind].getPhone()<<endl;
+            cout << "Seats Reserved         : " <<cus[ind].getBookSeat()<<endl;
+            int x = getObjectNum(cus[ind].getMovieId());
+            cout<<  "Movie ID               : " <<bookingSysObj[x].getId()<<endl;
+            cout << "Movie Name             : " <<bookingSysObj[x].getName()<<endl;
+            cout << "Show time              : " <<bookingSysObj[x].getShowTime()<<endl;
+            cout << "Show Date              : " <<bookingSysObj[x].getShowDate()<<endl;
+            cout << "Total Price            : " <<(cus[ind].getBookSeat() * bookingSysObj[x].getPrice()) <<endl;
+            return ;
+
+        } //If End Braces
+
+
+
+       // increment counter
+        ind++;
+    }//While loop End
+
+
+    //Now if the loop Ends , it mean it searches all the data in array and does not found any match
+    //Data entered is Wrong
+    cout << "Sorry, No match Found with user Entered Data ..." <<endl;
+    cout << "Please try again    !!! "<<endl<<endl;
+}//END OF FUNCTION checkForSeat
+
+
+
+
+
+/**---------------------------------------------------------------------------------|
+------------------------Here is the Edit Movie Function ----------------------------|
+---------------When User wants to Edit the existing movie information --------------|
+----------Like Name, Seats, Price, Seats , Date  and Time --------------------------|
+------------------------------------------------------------------------------------|
+*/
+
+
+       //Function Edit Movie Start Here
+       //Function Edit Movie Start Here
+
+
+void editMovie()
+{
+    int nid;
+    cout<<"###################################################"<<endl;
+    cout<<"Dear User your going to Edit a Movie  .... "<<endl<<endl;
+    cout<<"Please Enter the Movie Id  : " ;
+    cin >> nid;
+    //Check weather the Movie(ID) is present Or Not @@@@@@@@@@@@
+    // If flag == 1
+    //Movie is present
+    //Else not
+
+    //Variables used for temporiry use
+
+    string name,date,time;
+    int id,price,seats;
+    //
+    //
+    int ind = getObjectNum(nid); //Object Number
+    int flag = checkId(nid);
+    if( flag == 1 )
+    {
+        cout << "Movie Found    :) "<<endl;
+        cout << "Please Enter The New information   " <<endl;
+        cout << "Enter new name  : " ;
+        cin >> name;
+        cout <<" Enter Id   "  ;
+        cin >> id;
+        id = checkDoubleId(id);
+        cout<< " Enter New Date " ;
+        cin >>date;
+        cout << "Enter New Time "  ;
+        cin >>time;
+        bookingSysObj[ind].setShowTime(time);
+
+
+        cout <<"Enter New movie Format " ;
+        cin >> time ;
+        bookingSysObj[ind].setFormat(time);
+
+        cout << "Enter Price : " ;
+        cin >>price;
+        cout <<"Enter seats : " ;
+        cin >> seats ;
+
+        bookingSysObj[ind].setName(name);
+        bookingSysObj[ind].setId(id);
+
+        bookingSysObj[ind].setShowDate(date);
+        bookingSysObj[ind].setMoviePrice(price);
+        bookingSysObj[ind].setSeat(seats);
+        cout << "Information Updated successfully ..!!!!!!! "<<endl<<endl;
+
+                   // saveMovieData();
+                //saveCustomerData();
+
+    }
+else
+    cout <<" Sorry, Movie information is not avilible " <<endl<< "Please Try again " <<endl<<endl;
+
+
+}
+
+//Edit Movie Function END Here
+//Task  Completed,  Information updated successfully
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+
 };
 
 int main()
