@@ -1,3 +1,13 @@
+//Below is header Files
+//Used in This program
+
+
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include <fstream>
+
+
 /**
 
 Project   : PPSD
@@ -39,13 +49,7 @@ retutn vallues from where it called
 
 
 
-//Below is header Files
-//Used in This program
 
-
-#include <iostream>
-#include <string>
-#include <stdio.h>
 
 using namespace std;
 
@@ -110,7 +114,7 @@ class customer
    void setName(string n)
    {  name=n; }
         //It set the booking sets number
-   void bookSeat(int s)
+   void setBookSeat(int s)
    { book_seat=s; }
 
 
@@ -193,7 +197,7 @@ void setMoviePrice(int x)
 
 
 void setSeatLeft(int x)
-{seat_left=seat_left-x; }
+{seat_left=x; }
 
 
 string setName(string x)
@@ -218,7 +222,7 @@ void setSeat(int x)
     seat_left=x;
 }
  int getPrice()
-  { return total_price; }
+  { return movie_price; }
 
   int getId()
   { return id_number; }
@@ -274,7 +278,7 @@ string getShowTime()
 class functions{
 public:
     //Max of 1000 customers
-customer cus[1000];
+customer cus[1200];
 
 //Indexer for movie array
 int cus_current_place=0;
@@ -315,13 +319,13 @@ int current_place=0;
 void BookSeat()         ///Booking New seat function:
 {
 
-    cout<<"Movie List is Below "<<endl<<"Please Select a Movie and Enter asked information :) "<<endl<<endl;
+    cout<<"             Movie List is Below "<<endl<<"              Please Select a Movie and Enter asked information :) "<<endl<<endl;
 
     display_list();          //This will display list.....
 
 
     int var,id,setseatleft;  //General variable used
-    cout<<"Enter Movie Id :"<<endl;
+    cout<<"             Enter Movie Id : " ;
     cin>>id;
 
     //check the id of entered movie
@@ -330,8 +334,8 @@ void BookSeat()         ///Booking New seat function:
         {
             //if movie is not present
             //show error message
-        cout<<endl<<"Sorry,  Wrong Id Input (Movie not found) "<<endl<<"Please Enter a correct Id "<<endl;
-        cout<<endl<<"Enter  1 to Enter again or 0 to exit ?        :: "<<endl;
+        cout<<endl<<"               Sorry,  Wrong Id Input (Movie not found) "<<endl<<"             Please Enter a correct Id "<<endl;
+        cout<<endl<<"               Enter  1 to Enter again or 0 to exit ?        :: "<<endl;
         cin>>var;
         if(var==1)
             BookSeat();
@@ -347,24 +351,24 @@ void BookSeat()         ///Booking New seat function:
 
 
          //Take name of user
-      cout<<"Enter Customer Name  :  " ;
+      cout<<"               Enter Customer Name  :  " ;
       cin>>st;
       cus[cus_current_place].setName(st);
 
        //Take customer Phone number
-      cout<<"Enter Customer Phone Number " ;
+      cout<<"               Enter Customer Phone Number " ;
       cin>>st;
       cus[cus_current_place].setPhone(st);
 
       //Take seats to be booked
-      cout<<"Enter Number of Seats you want to reserved " ;
+      cout<<"               Enter Number of Seats you want to reserved " ;
       cin>>x;
 
       if(x==0)
       {
            //If user enter 0 seats to be booked
            //Close program
-        cout<<" 0 seats cannot be reserved ..!!!! "<<endl;
+        cout<<"         0 seats cannot be reserved ..!!!! "<<endl;
          return ;
       }
 
@@ -387,23 +391,23 @@ void BookSeat()         ///Booking New seat function:
 
         if((bookingSysObj[index].getSeatLeft()-x)<0)
     {
-            cout<<"Sorry, You can only Reserve  "<<bookingSysObj[index].getSeatLeft()<<" Seats "<<endl;
-            cout<<bookingSysObj[index].getSeatLeft()<<" Seats Left "<<endl;
-            cout <<endl<<"Do you Want to Reserved "<<bookingSysObj[index].getSeatLeft() <<" :  (y/n) ? :  " ;
+            cout<<"             Sorry, You can only Reserve  "<<bookingSysObj[index].getSeatLeft()<<" Seats "<<endl;
+            cout<<"            "<< bookingSysObj[index].getSeatLeft()<<"   Seats Left "<<endl;
+            cout <<endl<<"              Do you Want to Reserved "<<bookingSysObj[index].getSeatLeft() <<" :  (y/n) ? :  " ;
             char y;
             cin>>y;
             if(y=='Y')
                 x=bookingSysObj[index].getSeatLeft();
-            else if(=='y')
+            else if(y=='y')
                 x=bookingSysObj[index].getSeatLeft();
             else
             return ;
         }
 
         //book the seat for user
-      cus[cus_current_place].bookSeat(x);
+      cus[cus_current_place].setBookSeat(x);
       int price = x * bookingSysObj[index].getMoviePrice() ;
-      cout << endl << "Tickets Purchased Successfully,  "<<endl<<"Total Price is : "<<price<<endl;
+      cout << endl << "             Tickets Purchased Successfully,  "<<endl<<"             Total Price is : "<<price<<endl;
       cus[cus_current_place].setPrice(price);
 
 
@@ -564,7 +568,7 @@ void saveMovieData()
 void display_list()
 {
 
-  cout << "Displaying Movies List "<<endl;
+  cout << "             Displaying Movies List "<<endl;
     cout<<"--------------------------------------------------------------------------------------------------"<<endl;
  for(int x=0; x<20; x++)
     {
@@ -579,17 +583,17 @@ void display_list()
 
 
 
-            cout<<"---------------------------------------------------"<<endl;
-            cout<<"---------------------------------------------------"<<endl;
-            cout<<"Movie Id        :  "<<bookingSysObj[x].getId()<<endl;
-            cout<<"Movie Name      :  "<<bookingSysObj[x].getName()<<endl;
-            cout<<"Movie Format    :  "<<bookingSysObj[x].getFormat()<<endl;
-            cout<<"Movie Show Date :  "<<bookingSysObj[x].getShowDate()<<endl;
-            cout<<"Movie Show Time :  "<<bookingSysObj[x].getShowTime()<<endl;
-            cout<<"Movie Price     :  "<<bookingSysObj[x].getMoviePrice()<<endl;
-            cout<<"Movie Seats     :  "<<bookingSysObj[x].getSeat()<<endl;
-            cout<<"---------------------------------------------------"<<endl;
-            cout<<"---------------------------------------------------"<<endl;
+            cout<<"             ---------------------------------------------------"<<endl;
+            cout<<"             ---------------------------------------------------"<<endl;
+            cout<<"             Movie Id        :  "<<bookingSysObj[x].getId()<<endl;
+            cout<<"             Movie Name      :  "<<bookingSysObj[x].getName()<<endl;
+            cout<<"             Movie Format    :  "<<bookingSysObj[x].getFormat()<<endl;
+            cout<<"             Movie Show Date :  "<<bookingSysObj[x].getShowDate()<<endl;
+            cout<<"             Movie Show Time :  "<<bookingSysObj[x].getShowTime()<<endl;
+            cout<<"             Movie Price     :  "<<bookingSysObj[x].getMoviePrice()<<endl;
+            cout<<"             Movie Seats     :  "<<bookingSysObj[x].getSeat()<<endl;
+            cout<<"             ---------------------------------------------------"<<endl;
+            cout<<"             ---------------------------------------------------"<<endl;
         }
     }
 
@@ -626,16 +630,16 @@ void addNewMovie()
 
 
     if(movie_limit==movie_stored)
-   { cout<<endl<<"Sorry, New movie cannot be added"<<endl;
-    cout<<"Movie limit is full (20) "<<endl;
-    cout<<"Delete a movie, than try again .!!"<<endl<<endl; }
+   { cout<<endl<<"              Sorry, New movie cannot be added"<<endl;
+    cout<<"             Movie limit is full (20) "<<endl;
+    cout<<"             Delete a movie, than try again .!!"<<endl<<endl; }
 
     ///If list is not full add new movie than
 else
 {
-    cout<<"Dear User, You are going to add a new movies "<<endl;
-    cout<<"Please Enter Information about New Movie"<<endl;
-    cout<<"***********************************************"<<endl<<endl;
+    cout<<endl<<"             Dear User, You are going to add a new movies "<<endl;
+    cout<<"             Please Enter Information about New Movie"<<endl;
+    cout<<"             ***********************************************"<<endl<<endl;
 
 // Now take the Movie information
 //Name id etc
@@ -643,7 +647,7 @@ else
 
     //take Id of New Movie ::
     int nid;
-    cout<<"Enter the Id of new movie :  ";
+    cout<<"             Enter the Id of new movie :  ";
     cin>>nid;
      nid = checkDoubleId(nid);
     bookingSysObj[current_place].setId(nid);
@@ -651,47 +655,47 @@ else
 
     //Take name of new movie ::
     string nname;
-    cout<<"Enter the Name of New movie :  ";
+    cout<<"             Enter the Name of New movie :  ";
     cin>>nname;
     bookingSysObj[current_place].setName(nname);
 
 
     //Take format of New Movie (2D or 3D) ::
     string nfor;
-    cout<<"Enter the Format of New movie (2D or 3D) :  ";
+    cout<<"             Enter the Format of New movie (2D or 3D) :  ";
     cin>>nfor;
     bookingSysObj[current_place].setFormat(nfor);
 
 
     //Take time for the movie(show time) ::
     string ntime;
-    cout<<"Enter the Time of New movie  (Without spaces):  ";
+    cout<<"             Enter the Time of New movie-->format(12:00Pm) (Without spaces):  ";
     cin>>ntime;
     bookingSysObj[current_place].setShowTime(ntime);
 
 
     //Take Date for the movie(show date) ::
     string ndate;
-    cout<<"Enter the Date of New movie -->format(12/4/2000) without spaces :  " ;
+    cout<<"             Enter the Date of New movie -->format(12/4/2000) (without spaces) :  " ;
     cin>> ndate;
     bookingSysObj[current_place].setShowDate(ndate);
 
 
     //Take Price for the new movie ::
     int nprice;
-    cout<<"Enter the Price of New movie :  ";
+    cout<<"             Enter the Price of New movie :  ";
     cin>>nprice;
     bookingSysObj[current_place].setMoviePrice(nprice);
 
 
     //Take Seats for the movie Entered ::
     int nseat;
-    cout<<"Enter The Seats in New movie  :  ";
+    cout<<"             Enter The Seats in New movie  :  ";
     cin>>nseat;
     bookingSysObj[current_place].setSeat(nseat);
     bookingSysObj[current_place].setSeatLeft(nseat);
 
-    cout<<endl<<"Please wait ......."<<endl<<"New Movie Has been added successfully  "<<endl<<endl;
+    cout<<endl<<"               Please wait ......."<<endl<<"               New Movie Has been added successfully  "<<endl<<endl;
 
     //Increment current place variable(indexer) ::
     current_place++;
@@ -872,8 +876,8 @@ void deleteMovie()
 
 int nid;
 
-    cout<<"Dear User, You are Going to delete a movie ..!! "<<endl;
-    cout<<"Enter the Id of Movie to be delete "<<endl;
+    cout<<"             Dear User, You are Going to delete a movie ..!! "<<endl;
+    cout<<"             Enter the Id of Movie to be delete "<<endl;
     cin >> nid;
     int delIndex = getObjectNum(nid);
 
@@ -884,7 +888,7 @@ int nid;
 
     if(delIndex == -1)
     {
-        cout <<" Sorry, The Entered Movie Id if not Found " <<endl<<endl;
+        cout <<"                Sorry, The Entered Movie Id if not Found " <<endl<<endl;
         return ;
 
     }
@@ -938,16 +942,16 @@ int nid;
 
 
 
-void BookSeat()         ///Booking New seat function:
+void BookSeatNew()         ///Booking New seat function:
 {
 
-    cout<<"Movie List is Below "<<endl<<"Please Select a Movie and Enter asked information :) "<<endl<<endl;
+    cout<<"             Movie List is Below "<<endl<<"              Please Select a Movie and Enter asked information :) "<<endl<<endl;
 
     display_list();          //This will display list.....
 
 
     int var,id,setseatleft;  //General variable used
-    cout<<"Enter Movie Id :"<<endl;
+    cout<<"             Enter Movie Id :"<<endl;
     cin>>id;
 
     //this utility function will check
@@ -957,8 +961,8 @@ void BookSeat()         ///Booking New seat function:
 
     if(checkId(id)==0)
         {
-        cout<<"Sorry,  Wrong Id Input (Movie not found) "<<endl<<"Please Enter a correct Id "<<endl;
-        cout<<"Enter 1 to Enter again or 0 to exit "<<endl;
+        cout<<"             Sorry,  Wrong Id Input (Movie not found) "<<endl<<"             Please Enter a correct Id "<<endl;
+        cout<<"             Enter 1 to Enter again or 0 to exit "<<endl;
         cin>>var;
         if(var==1)
             BookSeat();
@@ -979,25 +983,25 @@ void BookSeat()         ///Booking New seat function:
 
 
          //Take name of user
-      cout<<"Enter Customer Name  :  " ;
+      cout<<"               Enter Customer Name  :  " ;
       cin>>st;
       cus[cus_current_place].setName(st);
 
 
        //Take customer Phone number
-      cout<<"Enter Customer Phone Number " ;
+      cout<<"               Enter Customer Phone Number " ;
       cin>>st;
       cus[cus_current_place].setPhone(st);
 
       //Take seats to be booked
-      cout<<"Enter Number of Seats you want to reserved " ;
+      cout<<"               Enter Number of Seats you want to reserved " ;
       cin>>x;
 
       if(x==0)
       {
            //If user enter 0 seats to be booked
            //Close program
-        cout<<" 0 seats cannot be reserved ..!!!! "<<endl;
+        cout<<"             0 seats cannot be reserved ..!!!! "<<endl;
          return ;
       }
 
@@ -1020,9 +1024,9 @@ void BookSeat()         ///Booking New seat function:
 
         if((bookingSysObj[index].getSeatLeft()-x)<0)
     {
-            cout<<"Sorry, You can only Reserve  "<<bookingSysObj[index].getSeatLeft()<<" Seats "<<endl;
-            cout<<bookingSysObj[index].getSeatLeft()<<" Seats Left ..!!!!!!!!!"<<endl;
-            cout <<endl<<"Do you Want to Reserved "<<bookingSysObj[index].getSeatLeft() <<" :  (y/n) ? :  " ;
+            cout<<"             Sorry, You can only Reserve  "<<bookingSysObj[index].getSeatLeft()<<" Seats "<<endl;
+            cout<<"             "<<bookingSysObj[index].getSeatLeft()<<" Seats Left ..!!!!!!!!!"<<endl;
+            cout <<endl<<"              Do you Want to Reserved "<<bookingSysObj[index].getSeatLeft() <<" :  (y/n) ? :  " ;
             char y;
             cin>>y;
             if(y=='Y')
@@ -1096,6 +1100,25 @@ void BookSeat()         ///Booking New seat function:
 
 
 
+//This is helper function for Add new movie function
+//if user entered a value that is already present
+//it will ask user to enter another Id
+int checkDoubleId(int id)
+{
+int i = 0;
+while(i < 20)
+{
+    if(bookingSysObj[i].getId() == id)
+    {
+        cout << "               Sorry, Id exist Please Enter another id   :" ;
+        cin >> id ;
+        i = -1;
+    }
+    i++;
+}
+return id;
+}
+
 
    /**
 -----------------------------------------------------------------------------------------------------|
@@ -1127,17 +1150,17 @@ void checkForSeat(string ph, string name)
                // Data shown for the customer
                // Include Customer data and movie data
 
-            cout << "Dear customer, Seat are Booked :"<<endl<<endl;
-            cout << "Customer Information ...  " <<endl;
-            cout << "Customer Name          : " <<cus[ind].getName()<<endl;
-            cout << "Customer Phone Number  : " <<cus[ind].getPhone()<<endl;
-            cout << "Seats Reserved         : " <<cus[ind].getBookSeat()<<endl;
+            cout << "               Dear customer, Seat are Booked :"<<endl<<endl;
+            cout << "               Customer Information ...  " <<endl;
+            cout << "               Customer Name          : " <<cus[ind].getName()<<endl;
+            cout << "               Customer Phone Number  : " <<cus[ind].getPhone()<<endl;
+            cout << "               Seats Reserved         : " <<cus[ind].getBookSeat()<<endl;
             int x = getObjectNum(cus[ind].getMovieId());
-            cout<<  "Movie ID               : " <<bookingSysObj[x].getId()<<endl;
-            cout << "Movie Name             : " <<bookingSysObj[x].getName()<<endl;
-            cout << "Show time              : " <<bookingSysObj[x].getShowTime()<<endl;
-            cout << "Show Date              : " <<bookingSysObj[x].getShowDate()<<endl;
-            cout << "Total Price            : " <<(cus[ind].getBookSeat() * bookingSysObj[x].getPrice()) <<endl;
+            cout<<  "               Movie ID               : " <<bookingSysObj[x].getId()<<endl;
+            cout << "               Movie Name             : " <<bookingSysObj[x].getName()<<endl;
+            cout << "               Show time              : " <<bookingSysObj[x].getShowTime()<<endl;
+            cout << "               Show Date              : " <<bookingSysObj[x].getShowDate()<<endl;
+            cout << "               Total Price            : " <<(cus[ind].getBookSeat() * bookingSysObj[x].getPrice()) <<endl;
             return ;
 
         } //If End Braces
@@ -1151,8 +1174,8 @@ void checkForSeat(string ph, string name)
 
     //Now if the loop Ends , it mean it searches all the data in array and does not found any match
     //Data entered is Wrong
-    cout << "Sorry, No match Found with user Entered Data ..." <<endl;
-    cout << "Please try again    !!! "<<endl<<endl;
+    cout <<endl<<endl<<"             Sorry, No match Found with user Entered Data ..." <<endl;
+    cout << "             Please try again    !!! "<<endl<<endl;
 }//END OF FUNCTION checkForSeat
 
 
@@ -1182,9 +1205,9 @@ void editMovie()
     int nid;
 
 
-    cout<<"###################################################"<<endl;
-    cout<<"Dear User your going to Edit a Movie  .... "<<endl<<endl;
-    cout<<"Please Enter the Movie Id  : " ;
+    cout<<"             ###################################################"<<endl;
+    cout<<"             Dear User your going to Edit a Movie  .... "<<endl<<endl;
+    cout<<"             Please Enter the Movie Id  : " ;
     cin >> nid;
 
 
@@ -1209,31 +1232,31 @@ void editMovie()
 
 
 
-        cout << "Movie Found    :) "<<endl;
-        cout << "Please Enter The New information   " <<endl;
-        cout << "Enter new name  : " ;
+        cout << "               Movie Found    :) "<<endl;
+        cout << "               Please Enter The New information   " <<endl;
+        cout << "               Enter new name  : " ;
         cin >> name;
-        cout <<" Enter Id   "  ;
+        cout <<"                Enter Id   "  ;
 
         cin >> id;
         id = checkDoubleId(id);
 
-        cout<< " Enter New Date " ;
+        cout<< "                Enter New Date " ;
         cin >>date;
 
-        cout << "Enter New Time "  ;
+        cout << "               Enter New Time "  ;
         cin >>time;
 
         bookingSysObj[ind].setShowTime(time);
 
 
-        cout <<"Enter New movie Format " ;
+        cout <<"                Enter New movie Format " ;
         cin >> time ;
         bookingSysObj[ind].setFormat(time);
 
-        cout << "Enter Price : " ;
+        cout << "               Enter Price : " ;
         cin >>price;
-        cout <<"Enter seats : " ;
+        cout <<"                Enter seats : " ;
         cin >> seats ;
 
 
@@ -1248,7 +1271,7 @@ void editMovie()
         bookingSysObj[ind].setShowDate(date);
         bookingSysObj[ind].setMoviePrice(price);
         bookingSysObj[ind].setSeat(seats);
-        cout << "Information Updated successfully ..!!!!!!! "<<endl<<endl;
+        cout << "               Information Updated successfully ..!!!!!!! "<<endl<<endl;
 
                    // saveMovieData();
                 //saveCustomerData();
@@ -1257,7 +1280,7 @@ void editMovie()
 else
 
 
-    cout <<" Sorry, Movie information is not avilible " <<endl<< "Please Try again " <<endl<<endl;
+    cout <<endl<<endl<<"                Sorry, Movie information is not avilible " <<endl<< "               Please Try again " <<endl<<endl;
 
 
 }
@@ -1271,7 +1294,8 @@ else
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
-=======
+
+
 
 //***********************************************************************************//
 //***********************************************************************************//
@@ -1327,7 +1351,85 @@ void saveCustomerData()
 
 
 }//Function END
->>>>>>> f064a0d811734ef769e148959580cfda9f6fc4b4
+
+
+
+//****************************************************************************************
+//This is Read Customer data function . This will read the data from the TXT file and save
+// Memory at runtime for different operations
+//****************************************************************************************
+
+void readCustomerData()
+{
+     // F-stream object --------- :
+     fstream file;
+
+     //General Purpose variables (Local Variables) ::
+    string st;
+     int x = 0;
+       int i = 0;       // "i" is used as an indexing variable
+
+       // This is counter for attributes                      --------
+       //There are 5 different attributes for a single movie ---------
+       //If counter == 5 , it mean one movie data has been read from
+       //the file    -------------------------------------------------
+       // Now switch to other movie data
+       int counter = 0;
+
+       //if(!openFileIn(file, "CustomerData.txt"))
+        //return ;
+        //else
+        //{
+       //Open the file for reading ------ ::
+    file.open("CustomerData.txt");
+    while(file.eof()==0)
+    {
+        /** Reset the counter */
+            if(counter==5)
+            {
+                counter=0;
+                cus_current_place++;
+                i++;
+            }
+
+
+       // Here we set different "if" conditions ------------------------
+       // Because we know the program will read the data in same format
+       // as we save them in TXT File so it will jump on required "if"
+       // condition to store correct data  -----------------------------
+
+                    if(counter==0)
+                    {
+                        file >> st;
+                        if(st == "end")
+                            break;
+                        cus[i].setName(st);
+                    }
+                    else if(counter==1)
+                    {
+                        file >> x;
+                        cus[i].setBookSeat(x);
+                    }
+                    else if(counter==2)
+                    {
+                        file >> st ;
+                        cus[i].setPhone(st);
+                    }
+                    else if(counter==3)
+                    {
+                        file >> x ;
+                        cus[i].setMovieId(x);
+                    }
+                    else if(counter==4)
+                    {
+                        file >> x ;
+                        cus[i].setPrice(x);
+                    }
+                        counter++;
+    }
+       // }
+}        //END OF FUNCTION
+
 
 };
 
@@ -1347,21 +1449,21 @@ int main()
 
     do{
 
-            cout << " ****************************************************************** " <<endl;
-            cout << " WellCome to the Movie Ticket Booking System  "<< endl;
-            cout << " Please Select Your choice  >> " << endl <<endl ;
+            cout << "      **************************************************************************** " <<endl;
+            cout << "               WellCome to the Movie Ticket Booking System  "<< endl;
+            cout << "               Please Select Your choice  >> " << endl <<endl ;
 
-            cout << "***************************************************** " <<endl;
-            cout << "**  1. For Add A New Movie To Menu                *** " <<endl;
-            cout << "**  2. For Edit Existing Movie Data               *** " <<endl;
-            cout << "**  3. For Delete A Movie From List               *** " <<endl;
-            cout << "**  4. For Booking Your Tickets                   *** " <<endl;
-            cout << "**  5. For Checking Your Seat/Reservation         *** " <<endl;
-            cout << "**  6. For Displaying Movies List                 *** " <<endl;
-            cout << "***************************************************** " <<endl;
+            cout << "               ***************************************************** " <<endl;
+            cout << "               **  1)  For Add A New Movie To Menu                *** " <<endl;
+            cout << "               **  2)  For Edit Existing Movie Data               *** " <<endl;
+            cout << "               **  3)  For Delete A Movie From List               *** " <<endl;
+            cout << "               **  4)  For Booking Your Tickets                   *** " <<endl;
+            cout << "               **  5)  For Checking Your Seat/Reservation         *** " <<endl;
+            cout << "               **  6)  For Displaying Movies List                 *** " <<endl;
+            cout << "               ***************************************************** " <<endl;
 
             //User Choice
-            cout << " choice   : " ;
+            cout << "               choice   : " ;
             cin >> choice ;
 
 
@@ -1395,9 +1497,9 @@ int main()
 
             case 5:
 
-                cout << " Enter the Phone Number of customer :  "  ;
+                cout << "               Enter the Phone Number of customer :  "  ;
                 cin >> ph;
-                cout << " Enter The Name of Customer  : "  ;
+                cout << "               Enter The Name of Customer  : "  ;
                 cin >> name ;
                 my_object.checkForSeat(ph, name);
                 break;
@@ -1412,7 +1514,7 @@ int main()
 
 
             default :
-                cout << "Invalid input : " << endl;
+                cout << "               Invalid input : " << endl;
 
 
             } // Switch statement ENDS
@@ -1422,8 +1524,9 @@ int main()
 
         //Ask the User to Continue or To exit
         //Yes or No
-        cout <<"Do you want to Continue (y/n)   :  "<<endl;
+        cout <<endl<<"                Do you want to Continue (y/n)   :  ";
         cin >> ch ;
+        cout <<endl<<endl;
         if ( ch == 'n')
             {
             my_object.saveMovieData();
