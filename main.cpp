@@ -120,15 +120,15 @@ class BookingSystem
 {
   private:  //Private Data
 
-        int total_price;
         int id_number;
+        int total_price;
         int movie_price;      ///These are data types
         int seats;            ///that will be used to store
         int seat_left;
         string name;          ///related data
         string show_date;
-        string format;
         string show_time;
+        string format;
 
 
 
@@ -831,10 +831,23 @@ int nid;
 
 }
 
+<<<<<<< HEAD
+=======
+//This function
+//will delete data
+//of a single movie
+//and after it will decrease
+//the indexer of
+//movie counter
+//
+//Data is shifted back to
+//fill the vacant place
+>>>>>>> f064a0d811734ef769e148959580cfda9f6fc4b4
 
 
 
 
+<<<<<<< HEAD
 /** --------------------------------------------------------------------------------
 -------------Booking New Seat Function ---------------------------------------------
 ----Inputs: Null -----------------We are taking input in this function and pass ----
@@ -1134,6 +1147,57 @@ else
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
+=======
+
+//***********************************************************************************//
+//***********************************************************************************//
+//***********************************************************************************//
+
+
+
+
+
+//************************************************************************************//
+//************************************************************************************//
+/**                   New Function Starts                      **/
+
+//* This function will save the customer data into  TXT file ------Name cusDataFile.TXT
+
+void saveCustomerData()
+{
+
+    //Create object of f-stream class
+    fstream dataFile;
+
+      // open File for Writing
+      // Reading Mode ------------------- IOS::OUT
+    dataFile.open("CustomerData.txt", ios::out);
+
+    int i = 0;
+    // Starts Loop
+    //Counts up to last Object's
+    while (i < cus_current_place )
+    {
+
+                 //Writing customer data into TXT file
+              dataFile << cus[i].getName() << endl;
+              dataFile << cus[i].getBookSeat() << endl;
+              dataFile << cus[i].getPhone() <<endl;
+              dataFile << cus[i].getMovieId() << endl;
+              dataFile << cus[i].getPrice() << endl;
+
+        //increment the counter
+        i++;
+    }
+
+    // Data Saved
+    // Close the File
+    string st="end";
+    dataFile << st;
+    dataFile.close();
+
+}//Function END
+>>>>>>> f064a0d811734ef769e148959580cfda9f6fc4b4
 
 };
 
