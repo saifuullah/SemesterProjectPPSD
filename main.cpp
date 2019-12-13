@@ -1,5 +1,14 @@
 /**
 
+Project   : PPSD
+Instructor :  Sir Bacha Rehman
+
+
+This is a cpp code
+we used OOP in inmpelementing
+this functionality
+
+
 --------------------------------------------------------------------@@
 This Program can implement a functionality of movie ticket booking
 system. Different movies are added using it's methods and also any
@@ -9,7 +18,10 @@ list.
 --------------------------------------------------------------------@@
 
 --------------------------------------------------------------------@@
-Group Members: Imran Khan, Saif ullah Khan, Wisha Khurshid
+Group Members:
+Imran Khan RN 1802035
+ Saif ullah Khan 1802012
+ Wisha Khurshid 1802007
 --------------------------------------------------------------------@@
 
 
@@ -21,6 +33,14 @@ Group Members: Imran Khan, Saif ullah Khan, Wisha Khurshid
 //THIS CLASS CONTAIN CUSTOMER RELATED DATA
 //NAME,PHONE:#,BOOK SEAT,MOVIE ID ,
 //AND THEIR SETTERS AND GETTERS
+//setters and gettters will recivea and\
+retutn vallues from where it called
+
+
+
+
+//Below is header Files
+//Used in This program
 
 
 #include <iostream>
@@ -28,18 +48,26 @@ Group Members: Imran Khan, Saif ullah Khan, Wisha Khurshid
 #include <stdio.h>
 
 using namespace std;
+
+//Start of customer class
+
 class customer
 {
   private:
+
       //private Data
       //Phone number of customer
       string phone_number;
+
       //Name of customer
       string name;
+
       //Seats reserved by customer
       int book_seat;
+
       //Movie id Booked by customer
       int movieId;
+
       //Movie Price
       int price ;
   public:
@@ -134,6 +162,8 @@ class BookingSystem
 
 
 public:
+    //this is unperameteirzed constructer
+
   BookingSystem()   //Constructer
   {
       total_price=0;
@@ -235,6 +265,8 @@ string getShowTime()
 //These functions are called from the main function and it will take data from user and send it to the other function
 //         in other classes
 
+//=========================================================================================@@
+//==========================================================================================@@
 //Example : This class will work as a bridge
 
 // User->Main(call)-->Functions-->Customer->data-->BookingSystem.
@@ -477,6 +509,18 @@ void saveMovieData()
     {
 
         //Writing Movie data into TXT file
+
+        //In first iteration it will write the data
+        //stored in first object
+
+        //In next it will stored the data
+        //stored in the second object
+        //This way all the objects data will be stored ion the data
+        //File and at the End the File
+        //will closed
+
+
+
         dataFile << bookingSysObj[i].getName() << endl;
         dataFile << bookingSysObj[i].getId() << endl ;
 
@@ -526,6 +570,15 @@ void display_list()
     {
         if(bookingSysObj[x].getId()!=0)
         {
+            // Here this condition will check if
+            //the object has no data about the current
+            //movie it will not print its data
+
+            //because the null object will
+            //contain no data
+
+
+
             cout<<"---------------------------------------------------"<<endl;
             cout<<"---------------------------------------------------"<<endl;
             cout<<"Movie Id        :  "<<bookingSysObj[x].getId()<<endl;
@@ -557,8 +610,20 @@ void display_list()
 */
 //Adding new movie to the Menu
 // ------------------------------------------------ //
+//
+//
+//
+//
+//
 void addNewMovie()
 {                         ///This is Add new movie function:
+
+
+//first check weather the list is full or not
+//if the list of movie is full
+//Show error message
+//Movie cannot be added
+
 
     if(movie_limit==movie_stored)
    { cout<<endl<<"Sorry, New movie cannot be added"<<endl;
@@ -571,6 +636,9 @@ else
     cout<<"Dear User, You are going to add a new movies "<<endl;
     cout<<"Please Enter Information about New Movie"<<endl;
     cout<<"***********************************************"<<endl<<endl;
+
+// Now take the Movie information
+//Name id etc
 
 
     //take Id of New Movie ::
@@ -631,6 +699,9 @@ else
     movie_stored++;
 
 }//else ENd
+// at the end display the new movie list
+
+
 
                display_list();
 }//End
@@ -702,42 +773,51 @@ void readMovieData()
                             break;
                         bookingSysObj[i].setName(st);
                     }
+
                     else if(counter==1)
                     {
                         file >> x;
                         bookingSysObj[i].setId(x);
                     }
+
                     else if(counter==2)
                     {
                         file >> st ;
                         bookingSysObj[i].setFormat(st);
                     }
+
                     else if(counter==3)
                     {
                         file >> st ;
                         bookingSysObj[i].setShowDate(st);
                     }
+
                     else if(counter==4)
                     {
                         file >> st ;
                         bookingSysObj[i].setShowTime(st);
                     }
+
                     else if(counter==5)
                     {
                         file >> x ;
                         bookingSysObj[i].setMoviePrice(x);
                     }
+
                     else if(counter==6)
                     {
                         file >> x;
                         bookingSysObj[i].setSeat(x);
                     }
+
                     else if(counter==7)
                     {
                         file >> x ;
                         bookingSysObj[i].setSeatLeft(x);
                     }
                         counter++;
+
+
     }
 } //END OF FUNCTION -------------(......)
 
@@ -831,8 +911,7 @@ int nid;
 
 }
 
-<<<<<<< HEAD
-=======
+
 //This function
 //will delete data
 //of a single movie
@@ -842,12 +921,13 @@ int nid;
 //
 //Data is shifted back to
 //fill the vacant place
->>>>>>> f064a0d811734ef769e148959580cfda9f6fc4b4
 
 
 
 
-<<<<<<< HEAD
+
+
+
 /** --------------------------------------------------------------------------------
 -------------Booking New Seat Function ---------------------------------------------
 ----Inputs: Null -----------------We are taking input in this function and pass ----
@@ -870,6 +950,11 @@ void BookSeat()         ///Booking New seat function:
     cout<<"Enter Movie Id :"<<endl;
     cin>>id;
 
+    //this utility function will check
+    //weather the user entered movie is present
+    // or not
+    // if not show error message
+
     if(checkId(id)==0)
         {
         cout<<"Sorry,  Wrong Id Input (Movie not found) "<<endl<<"Please Enter a correct Id "<<endl;
@@ -887,10 +972,17 @@ void BookSeat()         ///Booking New seat function:
         int x;     //Variables used for general purpose
 
 
+//now it is confirmed that the movie
+//is present and Now take the customer data
+// Save it to the customer class
+// and close
+
+
          //Take name of user
       cout<<"Enter Customer Name  :  " ;
       cin>>st;
       cus[cus_current_place].setName(st);
+
 
        //Take customer Phone number
       cout<<"Enter Customer Phone Number " ;
@@ -1079,13 +1171,23 @@ void checkForSeat(string ph, string name)
        //Function Edit Movie Start Here
 
 
+       //The Movie informatioj stored in the movie
+       // class wil be edited acoording to the
+       // desire of User
+       // and the new information will be updated
+
+
 void editMovie()
 {
     int nid;
+
+
     cout<<"###################################################"<<endl;
     cout<<"Dear User your going to Edit a Movie  .... "<<endl<<endl;
     cout<<"Please Enter the Movie Id  : " ;
     cin >> nid;
+
+
     //Check weather the Movie(ID) is present Or Not @@@@@@@@@@@@
     // If flag == 1
     //Movie is present
@@ -1101,17 +1203,27 @@ void editMovie()
     int flag = checkId(nid);
     if( flag == 1 )
     {
+        //now the sign flag is true
+        //THe movie is present
+        //Take the New Information from the user
+
+
+
         cout << "Movie Found    :) "<<endl;
         cout << "Please Enter The New information   " <<endl;
         cout << "Enter new name  : " ;
         cin >> name;
         cout <<" Enter Id   "  ;
+
         cin >> id;
         id = checkDoubleId(id);
+
         cout<< " Enter New Date " ;
         cin >>date;
+
         cout << "Enter New Time "  ;
         cin >>time;
+
         bookingSysObj[ind].setShowTime(time);
 
 
@@ -1123,6 +1235,12 @@ void editMovie()
         cin >>price;
         cout <<"Enter seats : " ;
         cin >> seats ;
+
+
+        //now the Information is entered by the user
+        //send itto the objects using
+        // setters and geters
+
 
         bookingSysObj[ind].setName(name);
         bookingSysObj[ind].setId(id);
@@ -1137,10 +1255,16 @@ void editMovie()
 
     }
 else
+
+
     cout <<" Sorry, Movie information is not avilible " <<endl<< "Please Try again " <<endl<<endl;
 
 
 }
+
+
+
+
 
 //Edit Movie Function END Here
 //Task  Completed,  Information updated successfully
@@ -1181,9 +1305,13 @@ void saveCustomerData()
 
                  //Writing customer data into TXT file
               dataFile << cus[i].getName() << endl;
+
               dataFile << cus[i].getBookSeat() << endl;
+
               dataFile << cus[i].getPhone() <<endl;
+
               dataFile << cus[i].getMovieId() << endl;
+
               dataFile << cus[i].getPrice() << endl;
 
         //increment the counter
@@ -1194,7 +1322,9 @@ void saveCustomerData()
     // Close the File
     string st="end";
     dataFile << st;
+
     dataFile.close();
+
 
 }//Function END
 >>>>>>> f064a0d811734ef769e148959580cfda9f6fc4b4
@@ -1297,11 +1427,25 @@ int main()
         if ( ch == 'n')
             {
             my_object.saveMovieData();
+
            my_object.saveCustomerData();
+
+
             }
+
+
+
+
     }while (ch != 'n');
 
 
 
     return 0;
 }
+
+//The Program is Completed
+//Every function is completelt tested
+//before submitting
+//the complete fucntiion is not tested
+//Noe the whole program will be teseted
+//in order to see all the bugs in the code
