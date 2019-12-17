@@ -1,6 +1,6 @@
 # SemesterProject PPSD
 # Group Members:
-         Imran Khan, Saif ullah Khan, Wisha Khurshid
+   Imran Khan, Saif ullah Khan, Wisha Khurshid
     
 
 # Project Name:
